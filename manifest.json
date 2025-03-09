@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Sign Language Video Overlay",
+  "version": "1.0",
+  "description": "Adds a sign language interpreter overlay for web videos.",
+  "permissions": ["activeTab", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["overlay.html", "styles.css", "sign_language_videos/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
